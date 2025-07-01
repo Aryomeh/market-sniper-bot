@@ -1,7 +1,28 @@
 services:
   - type: web
-    name: market-sniper
+    name: marketpulse-web
     env: python
-    buildCommand: ""
+    region: oregon  # or singapore/ireland
+    buildCommand: pip install -r requirements.txt && pip install gunicorn
+    startCommand: gunicorn app:app
+    envVars:
+      - key: TELEGRAM_TOKEN
+        value: your_token_here
+      - key: FINNHUB_KEY
+        value: your_finnhub_key
+      - key: CHANNEL_ID
+        value: "-1001234567890"  # Your channel ID
+
+  - type: worker
+    name: marketpulse-bot
+    env: python
+    region: oregon
+    buildCommand: pip install -r requirements.txt
     startCommand: python main.py
-    plan: free
+    envVars:
+      - key: TELEGRAM_TOKEN
+        syncValue: true  # Shares with web service
+      - key: FINNHUB_KEY
+        syncValue: true
+      - key: CHANNEL_ID
+        syncValue: true
