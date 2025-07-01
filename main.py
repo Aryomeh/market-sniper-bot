@@ -21,10 +21,10 @@ def keep_alive():
     t.start()
 
 # ✅ SECURE BOT TOKEN from Render Environment Variable
-BOT_TOKEN = os.getenv("7501305311:AAFm3h66QwupjNca2TdLYKwUkK-c4VoacWQ")  # Token must be stored in Render
+BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN ")  # Token must be stored in Render
 CHANNEL_ID = "-1002832342598"       # This is safe
 
-bot = Bot(7501305311:AAFm3h66QwupjNca2TdLYKwUkK-c4VoacWQ)
+bot = Bot(token=BOT_TOKEN)
 
 def get_crypto_prices():
     url = "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,solana,binancecoin&vs_currencies=usd"
