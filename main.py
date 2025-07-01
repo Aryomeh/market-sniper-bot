@@ -68,7 +68,7 @@ while True:
         message = format_message(crypto, stocks)
         bot.send_message(chat_id=CHANNEL_ID, text=message, parse_mode="Markdown")
         print("✅ Sent market update at", time.ctime())
-       time.sleep(10800)  # 3 hours
+        time.sleep(3600)  # 1 hour
     except Exception as e:
         print("❌ Error:", e)
         time.sleep(600)  # Retry after 10 minutes
