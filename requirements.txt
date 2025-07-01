@@ -1,4 +1,6 @@
-python-telegram-bot==13.15
+python-telegram-bot
 requests
-yfinance
+apscheduler
 flask
+nest-asyncio
+pytz
